@@ -3,10 +3,20 @@ require('styles/App.css');
 
 import React from 'react';
 
-let yeomanImage = require('../data/imageData.json');
-for(var i = 0, l=yeomanImage.length; i<l; i++){
-	yeomanImage[i].url = "../images/" + yeomanImage[i].fileName;
-}
+let imageDatas = require('../data/imageData.json');
+
+// 利用自执行函数， 将图片转换为URL路径信息
+imageDatas = ((imageDatasArr) =>{
+	for (var i = 0, j = imageDatasArr.length; i < j; i++) {
+		var singleImageData = imageDatasArr[i];
+
+		singleImageData.imageURL = require('../images/' + singleImageData.fileName);
+
+		imageDatasArr[i] = singleImageData;
+	} 
+
+	return imageDatasArr;
+})(imageDatas);
 
 class AppComponent extends React.Component {
 	constructor(props){
@@ -22,8 +32,8 @@ class AppComponent extends React.Component {
 	}
   render() {
     return (
-    	<section className="stage">{yeomanImage.map(function(item) {
-    		return <img src={item.url} />
+    	<section className="stage">{imageDatas.map(function(item) {
+    		return <img src={item.imageURL} />
     	})}
     	<section className="img-sec">
     	</section>
