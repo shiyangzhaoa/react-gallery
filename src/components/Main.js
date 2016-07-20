@@ -18,7 +18,7 @@ imageDatas = ((imageDatasArr) =>{
 	return imageDatasArr;
 })(imageDatas);
 
-class AppComponent extends React.Component {
+class GalleryByReactApp extends React.Component {
 	constructor(props){
         super(props);
         this.state = {
@@ -32,19 +32,17 @@ class AppComponent extends React.Component {
 	}
   render() {
     return (
-    	<section className="stage">{imageDatas.map(function(item) {
-    		return <img src={item.imageURL} />
-    	})}
-    	<section className="img-sec">
-    	</section>
-    	<nav className="controller-nav">
-    	</nav>
+    	<section className="stage">
+            <section className="img-sec">
+    	   </section>
+    	   <nav className="controller-nav">
+    	   </nav>
     	</section>
     );
   }
 }
 
-AppComponent.defaultProps = {
+GalleryByReactApp.defaultProps = {
 };
 
-export default AppComponent;
+export default GalleryByReactApp;
